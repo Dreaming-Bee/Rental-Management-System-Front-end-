@@ -1,1 +1,92 @@
-<p>rentals works!</p>
+<div class="container mt-1">
+    <div class="card mx-auto">
+        <div class="card-header bg-primary text-white text-center">
+            <h4>Add Rental</h4>
+        </div>
+        <div class="card-body">
+            <div id="addRentalForm">
+                <div class="d-flex gap-3">
+                    <div class="mb-3 flex-fill">
+                        <label for="id" class="form-label">ID</label>
+                        <input [value]="rental.id" [(ngModel)]="rental.id" type="text" class="form-control" id="id" name="id"
+                            placeholder="Enter ID" required>
+                    </div>
+                    <div class="mb-3 flex-fill">
+                        <label for="dueDate" class="form-label">Due Date</label>
+                        <input [value]="rental.dueDate" [(ngModel)]="rental.dueDate" type="date" class="form-control" id="dueDate" name="dueDate"
+                            placeholder="Enter Due Date" required>
+                    </div>
+                    <div class="mb-3 flex-fill">
+                        <label for="startDate" class="form-label">Start Date</label>
+                        <input [value]="rental.startDate" [(ngModel)]="rental.startDate" type="date" class="form-control" id="startDate" name="startDate"
+                            placeholder="Enter Start Date" required>
+                    </div>
+                </div>
+                <div class="d-flex gap-3">
+                    <div class="mb-3 flex-fill">
+                        <label for="endDate" class="form-label">End Date</label>
+                        <input [value]="rental.endDate" [(ngModel)]="rental.endDate" type="date" class="form-control" id="endDate" name="endDate"
+                            placeholder="Enter End Date" required>
+                    </div>
+                    <div class="mb-3 flex-fill">
+                        <label for="rental" class="form-label">Rental</label>
+                        <input [value]="rental.rental" [(ngModel)]="rental.rental" type="number" class="form-control" id="rental" name="rental"
+                            placeholder="Enter Rental Cost" required>
+                    </div>
+                    <div class="mb-3 flex-fill">
+                        <label for="fine" class="form-label">Fine</label>
+                        <input [value]="rental.fine" [(ngModel)]="rental.fine" type="number" class="form-control" id="fine" name="fine"
+                            placeholder="Enter Fine" required>
+                    </div>
+                </div>
+                <div class="d-flex gap-3">
+                    <div class="mb-3 flex-fill">
+                        <label for="totalCost" class="form-label">Total Cost</label>
+                        <input [value]="rental.totalCost" [(ngModel)]="rental.totalCost" type="number" class="form-control" id="totalCost" name="totalCost"
+                            placeholder="Enter Total Cost" required>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end gap-3 btnG">
+                    <div class="input-group sbw">
+                        <input  type="text" class="form-control" id="searchItem" placeholder="Search Item">
+                        <span class="input-group-text">
+                            <i class="bi bi-search"></i>
+                        </span>
+                    </div>
+                    <button type="submit" class="btn btn-success">Search Rentals</button>
+                    <button (click)="addRental()" type="submit" class="btn btn-success">Add Rental</button>
+                    <button (click)="updateRental()" type="submit" class="btn btn-success">Update Rental</button>
+                    <button (click)="deleteRental()" type="submit" class="btn btn-success">Delete Rental</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="rental-List mt-3">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Due Date</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Rental</th>
+                    <th>Fine</th>
+                    <th>Total Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let rental of rentalList">
+                    <td>{{rental.id}}</td>
+                    <td>{{rental.dueDate}}</td>
+                    <td>{{rental.startDate}}</td>
+                    <td>{{rental.endDate}}</td>
+                    <td>{{rental.rental}}</td>
+                    <td>{{rental.fine}}</td>
+                    <td>{{rental.totalCost}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

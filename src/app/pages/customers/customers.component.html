@@ -1,1 +1,68 @@
-<p>customers works!</p>
+<div class="container mt-1">
+    <div class="card mx-auto">
+        <div class="card-header bg-primary text-white text-center">
+            <h4>Add Customer</h4>
+        </div>
+        <div class="card-body">
+            <div id="addCustomerForm">
+                <div class="d-flex gap-3">
+                    <div class="mb-3 flex-fill">
+                        <label for="customerId" class="form-label">Customer ID</label>
+                        <input [value]="customer.customerId" [(ngModel)]="customer.customerId" type="text" class="form-control" id="customerId" name="customerId"
+                            placeholder="Enter Customer ID" required>
+                    </div>
+                    <div class="mb-3 flex-fill">
+                        <label for="customerName" class="form-label">Customer Name</label>
+                        <input [value]="customer.customerName" [(ngModel)]="customer.customerName" type="text" class="form-control" id="customerName" name="customerName"
+                            placeholder="Enter Customer Name" required>
+                    </div>
+                </div>
+                <div class="d-flex gap-3">
+                    <div class="mb-3 flex-fill">
+                        <label for="contact" class="form-label">Contact</label>
+                        <input [value]="customer.contact" [(ngModel)]="customer.contact" type="text" class="form-control" id="contact" name="contact"
+                            placeholder="Enter Contact Number" required>
+                    </div>
+                    <div class="mb-3 flex-fill">
+                        <label for="city" class="form-label">City</label>
+                        <input [value]="customer.city" [(ngModel)]="customer.city" type="text" class="form-control" id="city" name="city" placeholder="Enter City" required>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end gap-3 btnG ">
+                    <div class="input-group sbw">
+                        <input [(ngModel)]="customer.customerId" type="text" class="form-control" id="searchCustomer" placeholder="Search Customer">
+                        <span class="input-group-text">
+                            <i class="bi bi-search"></i>
+                        </span>
+                    </div>
+                    <button type="submit" class="btn btn-success ">Search Customer</button>
+                    <button (click)="addCustomer()" type="submit" class="btn btn-success ">Add Customer</button>
+                    <button (click)="searchCustomer()" type="submit" class="btn btn-success ">Update Customer</button>
+                    <button (click)="deleteCustomer()" type="submit" class="btn btn-success ">Delete Customer</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="customer-List mt-3">
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Contact</th>
+                    <th>City</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let customer of customerList">
+                    <td>{{customer.customerId}}</td>
+                    <td>{{customer.customerName}}</td>
+                    <td>{{customer.contact}}</td>
+                    <td>{{customer.city}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

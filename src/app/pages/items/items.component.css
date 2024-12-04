@@ -1,0 +1,42 @@
+.card {
+    min-width: 100vh;
+}
+.btnG {
+    gap: 1rem;
+}
+.sbw {
+    width: 49.09%;
+}
+.item-List {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #495057;
+    max-height: 50vh;
+    overflow-y: scroll;
+}
+
+table {
+    border-radius: 10px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+thead {
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+th, td {
+    text-align: center;
+    padding: 12px;
+    border: 1px solid #dee2e6;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+    background-color: #e9ecef;
+}

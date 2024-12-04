@@ -1,1 +1,81 @@
-<p>items works!</p>
+<div class="container mt-1">
+    <div class="card mx-auto">
+        <div class="card-header bg-primary text-white text-center">
+            <h4>Add Item</h4>
+        </div>
+        <div class="card-body">
+            <div id="addItemForm">
+                <div class="d-flex gap-3">
+                    <div class="mb-3 flex-fill">
+                        <label for="itemId" class="form-label">Item ID</label>
+                        <input [value]="item.itemId" [(ngModel)]="item.itemId" type="text" class="form-control" id="itemId" name="itemId"
+                            placeholder="Enter Item ID" required>
+                    </div>
+                    <div class="mb-3 flex-fill">
+                        <label for="itemName" class="form-label">Item Name</label>
+                        <input [value]="item.itemName" [(ngModel)]="item.itemName" type="text" class="form-control" id="itemName" name="itemName"
+                            placeholder="Enter Item Name" required>
+                    </div>
+                </div>
+                <div class="d-flex gap-3">
+                    <div class="mb-3 flex-fill">
+                        <label for="rentalPerDay" class="form-label">Rental Per Day</label>
+                        <input [value]="item.rentalPerDay" [(ngModel)]="item.rentalPerDay" type="number" class="form-control" id="rentalPerDay" name="rentalPerDay"
+                            placeholder="Enter Rental Per Day" required>
+                    </div>
+                    <div class="mb-3 flex-fill">
+                        <label for="finePerDay" class="form-label">Fine Per Day</label>
+                        <input [value]="item.finePerDay" [(ngModel)]="item.finePerDay" type="number" class="form-control" id="finePerDay" name="finePerDay"
+                            placeholder="Enter Fine Per Day" required>
+                    </div>
+                </div>
+                <div class="d-flex gap-3">
+                    <div class="mb-3 flex-fill">
+                        <label for="availability" class="form-label">Availability</label>
+                        <select [(ngModel)]="item.availability" class="form-control" id="availability" name="availability" required>
+                            <option value="Available">Available</option>
+                            <option value="Not Available">Not Available</option>
+                        </select>
+                    </div>                    
+                </div>
+
+                <div class="d-flex justify-content-end gap-3 btnG">
+                    <div class="input-group sbw">
+                        <input [(ngModel)]="item.itemId" type="text" class="form-control" id="searchItem" placeholder="Search Item">
+                        <span class="input-group-text">
+                            <i class="bi bi-search"></i>
+                        </span>
+                    </div>
+                    <button type="submit" class="btn btn-success">Search Item</button>
+                    <button (click)="addItem()" type="submit" class="btn btn-success">Add Item</button>
+                    <button (click)="searchItem()" type="submit" class="btn btn-success">Update Item</button>
+                    <button (click)="deleteItem()" type="submit" class="btn btn-success">Delete Item</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="item-List mt-3">
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Rental Per Day</th>
+                    <th>Fine Per Day</th>
+                    <th>Availability</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of itemList">
+                    <td>{{item.itemId}}</td>
+                    <td>{{item.itemName}}</td>
+                    <td>{{item.rentalPerDay}}</td>
+                    <td>{{item.finePerDay}}</td>
+                    <td>{{item.availability}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
