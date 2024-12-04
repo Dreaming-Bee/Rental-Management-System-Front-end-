@@ -48,13 +48,12 @@ export class ItemsComponent {
         this.clearAll();
       });
     }
-
     public searchItem(): void {
       if (!this.item.itemId) {
         alert('Please enter an item ID to search.');
         return;
       }
-
+    
       this.http.get<any>(`http://localhost:8080/item/searchById/${this.item.itemId}`).subscribe((data) => {
         if (data) {
           console.log(data);
@@ -62,8 +61,27 @@ export class ItemsComponent {
         } else {
           alert('No item found with the provided ID.');
         }
+      }, error => {
+        console.error('Error searching item:', error);
+        alert('An error occurred while searching for the item.');
       });
     }
+    
+    updateItem(): void {
+      if (!this.item.itemId) {
+        alert('Please provide a valid item ID.');
+        return;
+      }
+    
+      this.http.put("http://localhost:8080/item/update", this.item).subscribe((response) => {
+        alert('Item updated successfully!');
+        this.clearAll();
+      }, (error) => {
+        console.error('Error updating item:', error);
+        alert('An error occurred while updating the item.');
+      });
+    }
+    
 
     clearAll() {
       this.item.itemId = "";

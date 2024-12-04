@@ -54,7 +54,6 @@ export class CustomersComponent {
       return;
     }
   
-
     this.http.get<any>(`http://localhost:8080/customer/searchById/${this.customer.customerId}`).subscribe((data) => {
       if (data) {
         console.log(data);
@@ -67,6 +66,23 @@ export class CustomersComponent {
       alert('An error occurred while searching for the customer.');
     });
   }
+  
+
+  updateCustomer(): void {
+    if (!this.customer.customerId) {
+      alert('Please provide a valid customer ID.');
+      return;
+    }
+  
+    this.http.put("http://localhost:8080/customer/update", this.customer).subscribe((response) => {
+      alert('Customer updated successfully!');
+      this.clearAll();
+    }, (error) => {
+      console.error('Error updating customer:', error);
+      alert('An error occurred while updating the customer.');
+    });
+  }
+  
   
 
   clearAll(){

@@ -54,34 +54,40 @@ export class RentalsComponent {
       this.clearAll();
     });
   }
-
+  public updateRental(): void {
+    if (!this.rental.id) {
+      alert('Please provide a valid rental ID.');
+      return;
+    }
+  
+    this.http.put("http://localhost:8080/rental/update", this.rental).subscribe((response) => {
+      alert('Rental updated successfully!');
+      this.clearAll(); 
+    }, (error) => {
+      console.error('Error updating rental:', error);
+      alert('An error occurred while updating the rental.');
+    });
+  }
+  
   public searchRental(): void {
     if (!this.rental.id) {
       alert('Please enter a rental ID to search.');
       return;
     }
-
+  
     this.http.get<any>(`http://localhost:8080/rental/searchById/${this.rental.id}`).subscribe((data) => {
       if (data) {
         console.log(data);
-        this.rental = data; // Assign the fetched rental data to the rental object
+        this.rental = data; 
       } else {
         alert('No rental found with the provided ID.');
       }
+    }, error => {
+      console.error('Error searching rental:', error);
+      alert('An error occurred while searching for the rental.');
     });
   }
-
-  public updateRental() {
-    if (!this.rental.id) {
-      alert('Please enter a rental ID to update.');
-      return;
-    }
-
-    this.http.put(`http://localhost:8080/rental/update-rental/${this.rental.id}`, this.rental).subscribe((data) => {
-      alert("Rental updated successfully!");
-      this.clearAll();
-    });
-  }
+  
 
   clearAll() {
     this.rental.id = "";
